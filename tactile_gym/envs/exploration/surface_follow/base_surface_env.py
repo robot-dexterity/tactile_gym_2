@@ -130,7 +130,7 @@ class BaseSurfaceEnv(BaseTactileEnv):
             for y in range(int(self.num_heightfield_cols)):
 
                 height = (
-                    self.simplex_noise.noise2d(x=x * self.interpolate_noise, y=y * self.interpolate_noise)
+                    self.simplex_noise.noise2(x=x * self.interpolate_noise, y=y * self.interpolate_noise)
                     * self.height_perturbation_range
                 )
                 heightfield_data[x, y] = height
@@ -181,7 +181,7 @@ class BaseSurfaceEnv(BaseTactileEnv):
         Update an already loaded surface with random noise.
         """
         # set seed for simplex noise
-        self.simplex_noise = OpenSimplex(seed=self.np_random.randint(1e8))
+        self.simplex_noise = OpenSimplex(seed=int(self.np_random.integers(1e8)))
         self.heightfield_data = self.gen_simplex_heigtfield()
 
         # update heightfield

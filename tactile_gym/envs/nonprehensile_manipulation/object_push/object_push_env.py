@@ -147,14 +147,14 @@ class ObjectPushEnv(BaseObjectEnv):
         Generates smooth trajectory of goals
         """
         # initialise noise
-        simplex_noise = OpenSimplex(seed=self.np_random.randint(1e8))
+        simplex_noise = OpenSimplex(seed=int(self.np_random.integers(1e8)))
         init_offset = self.obj_width / 2 + self.traj_spacing
 
         # generate smooth 1d traj using opensimplex
         first_run = True
         for i in range(int(self.traj_n_points)):
 
-            noise = simplex_noise.noise2d(x=i * 0.1, y=1) * self.traj_max_perturb
+            noise = simplex_noise.noise2(x=i * 0.1, y=1) * self.traj_max_perturb
 
             if first_run:
                 init_noise_pos_offset = -noise

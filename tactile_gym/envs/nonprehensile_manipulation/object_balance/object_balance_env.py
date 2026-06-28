@@ -143,8 +143,8 @@ class ObjectBalanceEnv(BaseObjectEnv):
         # calculate force
         force_pos = self.init_obj_pos + np.array(
             [
-                self.np_random.choice([-1, 1]) * self.np_random.rand() * self.obj_base_width / 2,
-                self.np_random.choice([-1, 1]) * self.np_random.rand() * self.obj_base_width / 2,
+                self.np_random.choice([-1, 1]) * self.np_random.random() * self.obj_base_width / 2,
+                self.np_random.choice([-1, 1]) * self.np_random.random() * self.obj_base_width / 2,
                 0,
             ]
         )
